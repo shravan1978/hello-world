@@ -1,4 +1,4 @@
 # hello-world
-Hello World
+Hello World Amazing
 This is New Testing of Github usage.
 Will be used for labs.
