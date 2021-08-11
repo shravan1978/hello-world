@@ -1,0 +1,18 @@
+[user@host ~]$ oc set probe dc/myapp --readiness \
+> --get-url=http://:8080/healthz --period=20
+[user@host ~]$ oc set probe dc/myapp --liveness \
+> --open-tcp=3306 --period=20 \
+> --timeout-seconds=1
+[user@host ~]$ oc set probe dc/myapp --liveness \
+> --get-url=http://:8080/healthz --initial-delay-seconds=30 \
+> --succuess-threshold=1 --failure-threshold=3
+
+[student@workstation ~]$ oc set probe dc/probes --liveness \
+> --get-url=http://:8080/healthz \
+> --initial-delay-seconds=2 --timeout-seconds=2
+deploymentconfig.apps.openshift.io/probes probes updated
+[student@workstation ~]$ oc set probe dc/probes --readiness \
+> --get-url=http://:8080/ready \
+> --initial-delay-seconds=2 --timeout-seconds=2
+deploymentconfig.apps.openshift.io/probes probes updated
+3.2. Verify the value in the livenessProbe and readinessProbe entries:
